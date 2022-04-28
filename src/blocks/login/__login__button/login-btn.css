@@ -1,0 +1,27 @@
+.login-btn {
+    background-color: rgb(255, 255, 255);
+    width: 225px;
+    height: 50px;
+    border: 0;
+    margin: 48.34px 0 0 0;
+    padding-bottom: 5px;
+    cursor: pointer;
+    color: rgb(14, 7, 7);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 22px;
+    opacity: 1;
+    transition: .3s opacity;
+    border-radius: 2px;
+}
+.login-btn:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 200px) {
+    .login-btn {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

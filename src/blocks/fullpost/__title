@@ -1,0 +1,8 @@
+.fullpost__title{
+    width: 6em;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: auto;
+    padding: 100px;
+  margin: 50px auto;
+}
