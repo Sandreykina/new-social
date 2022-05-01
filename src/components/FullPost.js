@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, } from 'react-router-dom';
+import React, { useState, useEffect} from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
@@ -14,7 +14,6 @@ const FullPost = () => {
     const [isLiked, setisLiked] = useState(false);
     let newPostElement = React.createRef();
     const post = useSelector((state) => state.posts).postsArr.filter(item => item.id === Number(id)).pop();
-
     const [comments, setComments] = useState(post.comments);
 
     useEffect(() => {
@@ -36,6 +35,12 @@ const FullPost = () => {
         newPostElement.current.value = '';
     }
 
+      const handleEnterSend = (e) => {
+        if ( e.key === "Enter") {
+            handleAddComment();
+        }
+      };
+
     return (
         <div className="content">
             <button onClick={() => navigate(-1)}>Go Back</button>
@@ -56,8 +61,8 @@ const FullPost = () => {
                 {isLiked ? post.likeCount + 1 : post.likeCount}
             </div>
             <div className="fullpost__comment-newcomment">
-                <textarea ref={newPostElement} style={{ width: '80%' }}></textarea>
-                <button onClick={handleAddComment}>Отправить</button>
+                <input onKeyPress={handleEnterSend} ref={newPostElement} style={{ width: '80%' }}></input>
+                <button onClick={handleAddComment} type="submit">Отправить</button>
             </div>
             {comments?.map((user, i) => (
                 <div className="fullpost__comment" key={i}>

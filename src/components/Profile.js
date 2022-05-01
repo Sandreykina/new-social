@@ -1,18 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { initialProfile } from '../initialProfile';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
     const navigate = useNavigate();
+    const profileFromStore = useSelector((state) => state.profile.profileData);
 
     return (
         <div className="content">
             <p><button onClick={() => navigate(-1)}>Go Back</button></p>
-            <h1 className="profile__title">{initialProfile.nickname}</h1>
-            <p><img className='element__image' src={initialProfile.avatar} alt='ava' /></p>
-            <p>ФИО: {initialProfile.fio}</p>
-            <p>ВУЗ: {initialProfile.education}</p>
-            <p>Группа: {initialProfile.group}</p>
+            <h1 className="profile__title">{profileFromStore.nickname}</h1>
+            <p><img className='element__image' src={profileFromStore.avatar} alt='ava' /></p>
+            <p>ФИО: {profileFromStore.fio}</p>
+            <p>ВУЗ: {profileFromStore.education}</p>
+            <p>Группа: {profileFromStore.group}</p>
         </div>
     )
 }

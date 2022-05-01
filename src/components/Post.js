@@ -6,13 +6,10 @@ const Post = ({ post, onPostClick, onPostLike, onPostDelete, }) => {
   }
 
   return (
-    <div>
-      <article className="element">
-
+      <article onClick={handlePostClick} className="element">
         <img
           src={post.img}
           alt={post.title}
-          onClick={handlePostClick}
           className="element__image"
         />
 
@@ -26,7 +23,6 @@ const Post = ({ post, onPostClick, onPostLike, onPostDelete, }) => {
           {post.description.length > 130 ? post.description.slice(0, 130) + '...' : post.description}
         </div>
       </article>
-    </div>
   );
 }
 
