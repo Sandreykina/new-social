@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/social-network/static/css/main.826b4adb.css",
-    "main.js": "/social-network/static/js/main.0d2e0689.js",
+    "main.js": "/social-network/static/js/main.5297078c.js",
     "static/js/787.f2b24c11.chunk.js": "/social-network/static/js/787.f2b24c11.chunk.js",
     "static/media/Inter-Black.woff": "/social-network/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/social-network/static/media/Inter-Regular.8c206db99195777c6769.woff",
@@ -15,11 +15,11 @@
     "static/media/pencil.svg": "/social-network/static/media/pencil.6c7bf05444b9793fdf6e.svg",
     "static/media/plus.svg": "/social-network/static/media/plus.bed8c136e13907f5eefb.svg",
     "main.826b4adb.css.map": "/social-network/static/css/main.826b4adb.css.map",
-    "main.0d2e0689.js.map": "/social-network/static/js/main.0d2e0689.js.map",
+    "main.5297078c.js.map": "/social-network/static/js/main.5297078c.js.map",
     "787.f2b24c11.chunk.js.map": "/social-network/static/js/787.f2b24c11.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.826b4adb.css",
-    "static/js/main.0d2e0689.js"
+    "static/js/main.5297078c.js"
   ]
 }
