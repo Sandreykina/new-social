@@ -1,6 +1,6 @@
 {
-  "homepage": "http://sandreykina.github.io/social-network",
-  "name": "new-social",
+  "homepage": "https://sandreykina.github.io/new-social/",
+  "name": "social-network",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
