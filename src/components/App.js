@@ -19,7 +19,7 @@ const App = () => {
       navigate("./login");
     }
   }, [loggedIn, navigate])
-  
+
   const handleAddPlaceClick = () => {
     setIsAddPostPopupOpen(true);
   };
@@ -27,7 +27,7 @@ const App = () => {
   const closeAllPopups = () => {
     setIsAddPostPopupOpen(false);
   };
-  
+
   const handleProfileClick = () => {
     navigate("./profile")
   };
@@ -45,26 +45,32 @@ const App = () => {
 
   return (
     <div>
-        <div className="page">
-          <Header />
-          <Routes>
-            <Route exact path={PostsUrl.path} element={<FullPost />} />
-            <Route exact path="/profile" element={<Profile />} />
-            <Route exact path="/login" element={<Login onSubmit={onEnter}/>} />
-            <Route path="/" element={
-              <Main
-                onAddPost={handleAddPlaceClick}
-                onPostClick={handlePostClick}
-                onProfileInfo={handleProfileClick}
-              />} />
-          </Routes>
-          <Footer />
-          <AddPostPopup
-            isOpen={isAddPostPopupOpen}
-            onClose={closeAllPopups}
-            onUpdatePlace={handleAddPlaceClick}
-          />
-        </div>
+      <div className="page">
+        <Header />
+        <Routes>
+          <Route exact path={PostsUrl.path} element={<FullPost />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/login" element={<Login onSubmit={onEnter} />} />
+          <Route path="/" element={
+            <Main
+              onAddPost={handleAddPlaceClick}
+              onPostClick={handlePostClick}
+              onProfileInfo={handleProfileClick}
+            />} />
+          <Route path="/social-network" element={
+            <Main
+              onAddPost={handleAddPlaceClick}
+              onPostClick={handlePostClick}
+              onProfileInfo={handleProfileClick}
+            />} />
+        </Routes>
+        <Footer />
+        <AddPostPopup
+          isOpen={isAddPostPopupOpen}
+          onClose={closeAllPopups}
+          onUpdatePlace={handleAddPlaceClick}
+        />
+      </div>
     </div>
   );
 }

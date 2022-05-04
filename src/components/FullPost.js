@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -12,7 +12,7 @@ const FullPost = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const [isLiked, setisLiked] = useState(false);
-    let newPostElement = React.createRef();
+    let newPostElement = React.useRef();
     const post = useSelector((state) => state.posts).postsArr.filter(item => item.id === Number(id)).pop();
     const [comments, setComments] = useState(post.comments);
 
@@ -35,11 +35,11 @@ const FullPost = () => {
         newPostElement.current.value = '';
     }
 
-      const handleEnterSend = (e) => {
-        if ( e.key === "Enter") {
+    const handleEnterSend = (e) => {
+        if (e.key === "Enter") {
             handleAddComment();
         }
-      };
+    };
 
     return (
         <div className="content">
