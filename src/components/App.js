@@ -57,7 +57,7 @@ const App = () => {
               onPostClick={handlePostClick}
               onProfileInfo={handleProfileClick}
             />} />
-          <Route path="/social-network" element={
+          <Route path="social-network" element={
             <Main
               onAddPost={handleAddPlaceClick}
               onPostClick={handlePostClick}
