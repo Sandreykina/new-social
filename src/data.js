@@ -6,7 +6,6 @@ export let initialData = [
         img: 'https://www.air-ventilation.ru/files/43035rekonstrukciya-3-min.jpg',
         comments: [
             { name: 'maxim', comment: 'Боже какой восхитительный пост' },
-            { name: 'Olenka', comment: 'Мне он тоже очень понравился' },
             { name: 'Konstantin', comment: 'Статья ни о чем, отписка!' }
         ],
         likeCount: 55,
@@ -20,7 +19,7 @@ export let initialData = [
         comments: [
             { name: 'bad girl', comment: 'Однозначно подписка' },
             { name: 'good', comment: 'Замечательно!' },
-            { name: 'sasha', comment: 'Изумительный пост, вы восхитительны' }
+            { name: 'sasha', comment: 'Изумительный пост, вы восхитительныИзумительный пост, вы восхитительны' }
         ],
         likeCount: 100,
         isLiked: true,
