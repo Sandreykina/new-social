@@ -11,6 +11,7 @@ textarea {resize:none;}
   -ms-font-feature-settings: "kern" 1;
   font-feature-settings: "kern"; */
   background-color: #0b0c0e;
+  min-height: 100vh;
   background-size: cover;
   color: #fff;
   padding: 0;

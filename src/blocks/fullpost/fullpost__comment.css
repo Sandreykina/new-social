@@ -1,14 +1,11 @@
 .fullpost__comment {
-    position: relative;
-    margin: 20px auto;
-} 
-.fullpost__comment {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: stretch;
     color: #CC3300;
-    }
+    margin: 10;
+} 
 .fullpost__comment-heading {
     display: flex;
     align-items: center;
