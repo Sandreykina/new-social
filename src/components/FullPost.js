@@ -6,14 +6,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import { useSelector, useDispatch } from 'react-redux'
-import { addComment, changeLike } from "../slices/postsSlice";
 import axios from 'axios';
 
 const FullPost = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const dispatch = useDispatch();
     const [isLiked, setIsLiked] = useState();
     const [post, setPost] = useState();
     let newPostElement = React.useRef();

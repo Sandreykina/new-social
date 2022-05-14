@@ -19,12 +19,7 @@ export const apiAction = (
         onFailure,
       } = configForAxios;
 
-      return axios({
-        url,
-        method,
-        params,
-        data,
-      })
+      return axios({ url, method, params, data, })
         .then((res) => {
           if (onSuccess) onSuccess(res.data);
 
