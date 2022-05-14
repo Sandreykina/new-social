@@ -1,15 +1,22 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import Post from "./Post";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllPosts } from "../slices/postsSlice";
 
 const Main = ({ onAddPost, onPostClick, onProfileInfo }) => {
-  const [posts, setPosts] = useState([]);
-  const postsFromStore = useSelector((state) => state.posts.postsArr);
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts.postsArr);
   const profileFromStore = useSelector((state) => state.profile.profileData);
 
   useEffect(() => {
-    setPosts(postsFromStore);
-  }, [postsFromStore]);
+    dispatch(getAllPosts({
+      onFailure: () => {
+        console.log('Не получилось получить посты');
+      }, onSuccess: (res) => {
+       console.log("Успешно");
+      }
+    }))
+  }, []);
 
   return (
     <div>
