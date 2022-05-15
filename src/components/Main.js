@@ -1,22 +1,30 @@
-import React, {useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllPosts } from "../slices/postsSlice";
+import axios from 'axios';
 
 const Main = ({ onAddPost, onPostClick, onProfileInfo }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.postsArr);
-  const profileFromStore = useSelector((state) => state.profile.profileData);
+  const [profile, setProfile] = useState();
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/profile`)
+      .then(res => {
+        setProfile(res.data);
+      })
+  }, [])
 
   useEffect(() => {
     dispatch(getAllPosts({
       onFailure: () => {
         console.log('Не получилось получить посты');
-      }, onSuccess: (res) => {
-       console.log("Успешно");
+      }, onSuccess: () => {
+        console.log("Успешно");
       }
     }))
-  }, []);
+  }, [])
 
   return (
     <div>
@@ -24,7 +32,7 @@ const Main = ({ onAddPost, onPostClick, onProfileInfo }) => {
         <section className="profile">
           <div onClick={onProfileInfo} className="profile__wrapper">
             <img
-              src={profileFromStore.avatar}
+              src={profile?.avatar}
               alt="Аватарка"
               className="profile__avatar"
             />
@@ -32,9 +40,9 @@ const Main = ({ onAddPost, onPostClick, onProfileInfo }) => {
           </div>
           <div className="profile__info">
             <div className="profile__info-twin">
-              <h1 className="profile__title">{profileFromStore?.nickname}</h1>
+              <h1 className="profile__title">{profile?.nickname}</h1>
             </div>
-            <p className="profile__subtitle">{profileFromStore?.fio}</p>
+            <p className="profile__subtitle">{profile?.fio}</p>
           </div>
           <button
             onClick={onAddPost}

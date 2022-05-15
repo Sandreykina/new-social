@@ -7,7 +7,8 @@ import FullPost from "./FullPost";
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Profile from "./Profile";
 import { PostsUrl } from "../utils/router";
-
+//исправить попап
+//исправить добавление комментариев
 const App = () => {
   const [isAddPostPopupOpen, setIsAddPostPopupOpen] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const App = () => {
     }
   }, [loggedIn, navigate])
 
-  const handleAddPlaceClick = () => {
+  const handleAddPostClick = () => {
     setIsAddPostPopupOpen(true);
   };
 
@@ -52,7 +53,7 @@ const App = () => {
           <Route exact path="/login" element={<Login onSubmit={onEnter} />} />
           <Route path="/" element={
             <Main
-              onAddPost={handleAddPlaceClick}
+              onAddPost={handleAddPostClick}
               onPostClick={handlePostClick}
               onProfileInfo={handleProfileClick}
             />} />
@@ -60,7 +61,7 @@ const App = () => {
         <AddPostPopup
           isOpen={isAddPostPopupOpen}
           onClose={closeAllPopups}
-          onUpdatePlace={handleAddPlaceClick}
+          onUpdatePlace={handleAddPostClick}
         />
       </div>
     </div>

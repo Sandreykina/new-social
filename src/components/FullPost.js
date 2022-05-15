@@ -7,14 +7,19 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import axios from 'axios';
+import { setComment } from "../slices/postsSlice";
+import { useDispatch, useSelector } from 'react-redux';
 
 const FullPost = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { id } = useParams();
     const [isLiked, setIsLiked] = useState();
     const [post, setPost] = useState();
-    let newPostElement = React.useRef();
     const [comments, setComments] = useState();
+    const [comment, setComment] = useState();
+    let newPostElement = React.useRef();
+    const postsCount = useSelector((state) => state.posts.postsArr).length;
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/posts/${id}`)
@@ -22,6 +27,7 @@ const FullPost = () => {
                 setPost(res.data);
                 setComments(res.data.comments);
                 setIsLiked(res.data.isLiked);
+                setComment(res.data.comments[id]);
         })
     }, [])
 
@@ -31,16 +37,34 @@ const FullPost = () => {
                 setPost(res.data);
                 setComments(res.data.comments);
                 setIsLiked(res.data.isLiked);
+                setComment(res.data.comments[id]);
         })
     }
 
+    // const handleAddComment = () => {
+    //     axios.post(`http://localhost:5000/api/posts/${id}`)
+    //         .then(res => {
+    //             setPost(res.data);
+    //             setComments(res.data.comments);
+    //             setIsLiked(res.data.isLiked);
+    //             setComment(res.data.comments[id]);
+    //     })
+    // }
+
     const handleAddComment = () => {
-        // dispatch(addComment({
-        //     postId: id, comment: {
-        //         name: 'Me',
-        //         comment: newPostElement.current.value,
-        //     }
-        // }));
+        dispatch(setComment({
+            onFailure: () => {
+              console.log('Не получилось добавить коммент');
+            }, onSuccess: () => {
+              console.log("Успешно");
+            },
+            data: {postId: id,
+                comment: {
+                    id: postsCount,
+                    name: 'Me',
+                    comment: newPostElement.current.value,
+                }}
+            }));
         newPostElement.current.value = '';
     }
 
@@ -70,7 +94,7 @@ const FullPost = () => {
                 {post?.likeCount}
             </div>
             <div className="fullpost__comment-newcomment">
-                <input onKeyPress={handleEnterSend} ref={newPostElement} style={{ width: '80%' }}></input>
+                <input onKeyPress={handleEnterSend} ref={newPostElement}></input>
                 <button onClick={handleAddComment} type="submit">Отправить</button>
             </div>
             {comments?.map((user, i) => (

@@ -12,6 +12,4 @@ export const profileSlice = createSlice({
   },
 })
 
-// export const { changeNickname } = profileSlice.actions
-
 export default profileSlice.reducer

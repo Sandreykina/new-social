@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Popup from "./Popup";
 import { addPost } from "../slices/postsSlice";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllPosts } from "../slices/postsSlice";
 
 const AddPostPopup = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [text, setText] = useState("");
   const dispatch = useDispatch();
-  const postsCount = useSelector((state) => state.posts.postsArr).length;
+  const post = useSelector((state) => state.posts.postsArr);
+  const postsCount = post.length;
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -23,18 +25,32 @@ const AddPostPopup = ({ isOpen, onClose }) => {
   }
 
   const handleSave = () => {
-    const newPost = {
-      id: postsCount || 0,
-      title: name,
-      description: text,
-      img: link,
-      comments: [],
-      likeCount: 0,
-      isLiked: false,
-    };
-
-    dispatch(addPost({ post: newPost }));
+    dispatch(addPost({
+      onFailure: () => {
+        console.log('Не получилось добавить посты');
+      }, onSuccess: () => {
+        console.log("Успешно");
+      }, data: {
+        id: postsCount,
+        title: name,
+        description: text,
+        img: link,
+        comments: [],
+        likeCount: 0,
+        isLiked: false,
+      }
+    }))
   }
+
+  useEffect(() => {
+    dispatch(getAllPosts({
+      onFailure: () => {
+        console.log('Не получилось получить посты');
+      }, onSuccess: () => {
+        console.log("Успешно");
+      }
+    }))
+  }, [postsCount])
 
   useEffect(() => {
     setName("");
@@ -73,6 +89,8 @@ const AddPostPopup = ({ isOpen, onClose }) => {
             alt=''
             src={link}
             className="element__image"
+            style={{width: '282px',
+              height: '282px' }}
           />)}
           <div>
             <textarea
