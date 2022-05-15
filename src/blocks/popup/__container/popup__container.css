@@ -1,7 +1,7 @@
 .popup__container {
     box-sizing: border-box;
     width: 60%;
-    max-height: 60%;
+    height: 90%;
     background-color: white;
     border-radius: 10px;
     position: relative;

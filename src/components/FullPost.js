@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import axios from 'axios';
-import { setComment } from "../slices/postsSlice";
+import { addComment } from "../slices/postsSlice";
 import { useDispatch, useSelector } from 'react-redux';
 
 const FullPost = () => {
@@ -19,7 +19,6 @@ const FullPost = () => {
     const [comments, setComments] = useState();
     const [comment, setComment] = useState();
     let newPostElement = React.useRef();
-    const postsCount = useSelector((state) => state.posts.postsArr).length;
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/posts/${id}`)
@@ -27,7 +26,7 @@ const FullPost = () => {
                 setPost(res.data);
                 setComments(res.data.comments);
                 setIsLiked(res.data.isLiked);
-                setComment(res.data.comments[id]);
+                setComment(res.data.comment);   
         })
     }, [])
 
@@ -37,36 +36,46 @@ const FullPost = () => {
                 setPost(res.data);
                 setComments(res.data.comments);
                 setIsLiked(res.data.isLiked);
-                setComment(res.data.comments[id]);
+                setComment(res.data.comments.comment);   
         })
     }
 
-    // const handleAddComment = () => {
-    //     axios.post(`http://localhost:5000/api/posts/${id}`)
-    //         .then(res => {
-    //             setPost(res.data);
-    //             setComments(res.data.comments);
-    //             setIsLiked(res.data.isLiked);
-    //             setComment(res.data.comments[id]);
-    //     })
-    // }
-
     const handleAddComment = () => {
-        dispatch(setComment({
-            onFailure: () => {
-              console.log('Не получилось добавить коммент');
-            }, onSuccess: () => {
-              console.log("Успешно");
-            },
-            data: {postId: id,
-                comment: {
-                    id: postsCount,
-                    name: 'Me',
-                    comment: newPostElement.current.value,
-                }}
-            }));
+        debugger;
+        dispatch(addComment({
+            postId: id, comment: {
+                id: comments?.length,
+                name: 'Me',
+                comment: newPostElement.current.value,
+            }
+        }));
+        axios.post(`http://localhost:5000/api/posts/${id}`)
+            .then(res => {
+                setPost(res.data);
+                setComments(res.data.comments);
+                setIsLiked(res.data.isLiked);
+                setComment(res.data.comment);   
+        })
         newPostElement.current.value = '';
     }
+
+    // const handleAddComment = () => {
+    //     debugger;
+    //     dispatch(setComment({
+    //         onFailure: () => {
+    //           console.log('Не получилось добавить коммент');
+    //         }, onSuccess: () => {
+    //           console.log("Успешно");
+    //         },
+    //         data: {postId: id,
+    //             comment: {
+    //                 id: commentsCount,
+    //                 name: 'Me',
+    //                 comment: newPostElement.current.value,
+    //             }}
+    //         }));
+    //     newPostElement.current.value = '';
+    // }
 
     const handleEnterSend = (e) => {
         if (e.key === "Enter") {

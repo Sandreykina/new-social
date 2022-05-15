@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Popup from "./Popup";
-import { addPost } from "../slices/postsSlice";
+import { addPost, getAllPosts } from "../slices/postsSlice";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPosts } from "../slices/postsSlice";
 
-const AddPostPopup = ({ isOpen, onClose }) => {
+const AddPostPopup = ({ isOpen, onClose, onUpdatePost }) => {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [text, setText] = useState("");

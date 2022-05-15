@@ -6,7 +6,7 @@ export let initialData = [
         img: 'https://www.air-ventilation.ru/files/43035rekonstrukciya-3-min.jpg',
         comments: [
             { id: 0, name: 'maxim', comment: 'Боже какой восхитительный пост' },
-            { id: 0, name: 'Konstantin', comment: 'Статья ни о чем, отписка!' }
+            { id: 1, name: 'Konstantin', comment: 'Статья ни о чем, отписка!' }
         ],
         likeCount: 55,
         isLiked: true,
@@ -18,8 +18,8 @@ export let initialData = [
         img: 'https://www.culture.ru/s/vopros/malenkiy-chelovek/images/tild3439-6131-4033-b034-353530333264__photo.jpg',
         comments: [
             { id: 0, name: 'bad girl', comment: 'Однозначно подписка' },
-            { id: 0, name: 'good', comment: 'Замечательно!' },
-            { id: 0, name: 'sasha', comment: 'Изумительный пост, вы восхитительныИзумительный пост, вы восхитительны' }
+            { id: 1, name: 'good', comment: 'Замечательно!' },
+            { id: 2, name: 'sasha', comment: 'Изумительный пост, вы восхитительныИзумительный пост, вы восхитительны' }
         ],
         likeCount: 100,
         isLiked: true,
@@ -31,8 +31,8 @@ export let initialData = [
         img: 'https://cdnn.1prime.ru/images/82962/55/829625530.jpg',
         comments: [
             { id: 0, name: 'aa', comment: 'Класс!' },
-            { id: 0, name: 'bb', comment: 'Прекрасно' },
-            { id: 0, name: 'cc', comment: 'Наконец-то хорошие новости!' }
+            { id: 1, name: 'bb', comment: 'Прекрасно' },
+            { id: 2, name: 'cc', comment: 'Наконец-то хорошие новости!' }
         ],
         likeCount: 40,
         isLiked: false,
@@ -44,9 +44,9 @@ export let initialData = [
         img: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Solovetsky_Monastery_drone_1.jpg',
         comments: [
             { id: 0, name: 'qwerty', comment: 'Кул стори, вы мне нравитесь' },
-            { id: 0, name: 'billy', comment: 'Как я вас раньше не нашла...' },
-            { id: 0, name: 'medvedi', comment: 'Как я вас раньше не нашла...' },
-            { id: 0, name: 'anya', comment: 'Статья ни о чем, подписка!' }
+            { id: 1, name: 'billy', comment: 'Как я вас раньше не нашла...' },
+            { id: 2, name: 'medvedi', comment: 'Как я вас раньше не нашла...' },
+            { id: 3, name: 'anya', comment: 'Статья ни о чем, подписка!' }
         ],
         likeCount: 23,
         isLiked: false,

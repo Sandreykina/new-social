@@ -15,7 +15,8 @@ export const [getAllPosts] = apiAction(
 );
 
 export const [setComment] = apiAction(
-  'posts/setComment', ({ data, onFailure, onSuccess }) => ({
+  'posts/setComment', 
+  ({ data, onFailure, onSuccess }) => ({
     url: `http://localhost:5000/api/posts/:id`,
     method: 'POST',
     data,
@@ -41,17 +42,20 @@ export const postsSlice = createSlice({
   reducers: {
     changeLike: (state, { payload: { postId, like } }) => {
       state.postsArr[postId].isLiked = like
-    }
+    },
+    addComment: (state, { payload: { postId, comment } }) => {
+      state.postsArr[postId].comments?.push(comment);
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getAllPosts.fulfilled, (state, { payload }) => {
         state.postsArr = payload;
       })
-    builder
-      .addCase(setComment.fulfilled, (state, { payload: { postId, comment } }) => {
-        state.postsArr[postId].comments?.push(comment);
-      })
+    // builder
+    //   .addCase(setComment.fulfilled, (state, { payload: { postId, comment } }) => {
+    //     state.postsArr[postId].comments?.push(comment);
+    //   })
     builder
       .addCase(addPost.fulfilled, (state, { payload: { post } }) => {
         state.postsArr.push(post);
@@ -59,6 +63,6 @@ export const postsSlice = createSlice({
   }
 })
 
-export const { changeLike } = postsSlice.actions
+export const { changeLike, addComment } = postsSlice.actions
 
 export default postsSlice.reducer;

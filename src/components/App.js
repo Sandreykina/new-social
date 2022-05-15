@@ -61,7 +61,7 @@ const App = () => {
         <AddPostPopup
           isOpen={isAddPostPopupOpen}
           onClose={closeAllPopups}
-          onUpdatePlace={handleAddPostClick}
+          onUpdatePost={handleAddPostClick}
         />
       </div>
     </div>
