@@ -38,7 +38,6 @@ const FullPost = () => {
                 id: comments?.length,
                 name: 'Me',
                 comment: comment,
-            
         })
             .then(res => {
                 setComments(res.data.comments);
