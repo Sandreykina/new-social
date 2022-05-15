@@ -14,17 +14,6 @@ export const [getAllPosts] = apiAction(
   }),
 );
 
-export const [setComment] = apiAction(
-  'posts/setComment', 
-  ({ data, onFailure, onSuccess }) => ({
-    url: `http://localhost:5000/api/posts/:id`,
-    method: 'POST',
-    data,
-    onSuccess,
-    onFailure,
-  }),
-);
-
 export const [addPost] = apiAction(
   'posts/addPost',
   ({ data, onSuccess, onFailure }) => ({
@@ -52,10 +41,6 @@ export const postsSlice = createSlice({
       .addCase(getAllPosts.fulfilled, (state, { payload }) => {
         state.postsArr = payload;
       })
-    // builder
-    //   .addCase(setComment.fulfilled, (state, { payload: { postId, comment } }) => {
-    //     state.postsArr[postId].comments?.push(comment);
-    //   })
     builder
       .addCase(addPost.fulfilled, (state, { payload: { post } }) => {
         state.postsArr.push(post);

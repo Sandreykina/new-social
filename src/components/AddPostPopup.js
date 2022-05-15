@@ -3,7 +3,7 @@ import Popup from "./Popup";
 import { addPost, getAllPosts } from "../slices/postsSlice";
 import { useDispatch, useSelector } from 'react-redux';
 
-const AddPostPopup = ({ isOpen, onClose, onUpdatePost }) => {
+const AddPostPopup = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [text, setText] = useState("");
@@ -49,7 +49,7 @@ const AddPostPopup = ({ isOpen, onClose, onUpdatePost }) => {
         console.log("Успешно");
       }
     }))
-  }, [postsCount])
+  }, [dispatch])
 
   useEffect(() => {
     setName("");
