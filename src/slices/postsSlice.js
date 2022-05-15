@@ -28,14 +28,6 @@ export const [addPost] = apiAction(
 export const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {
-    changeLike: (state, { payload: { postId, like } }) => {
-      state.postsArr[postId].isLiked = like
-    },
-    addComment: (state, { payload: { postId, comment } }) => {
-      state.postsArr[postId].comments?.push(comment);
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllPosts.fulfilled, (state, { payload }) => {
