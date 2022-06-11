@@ -7,8 +7,7 @@ import FullPost from "./FullPost";
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Profile from "./Profile";
 import { PostsUrl } from "../utils/router";
-//исправить попап
-//исправить добавление комментариев
+
 const App = () => {
   const [isAddPostPopupOpen, setIsAddPostPopupOpen] = useState(false);
   const navigate = useNavigate();
@@ -44,7 +43,6 @@ const App = () => {
   }
 
   return (
-    <div>
       <div className="page">
         <Header />
         <Routes>
@@ -64,7 +62,6 @@ const App = () => {
           onUpdatePost={handleAddPostClick}
         />
       </div>
-    </div>
   );
 }
 
