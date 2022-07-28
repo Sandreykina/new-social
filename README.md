@@ -1,10 +1,14 @@
-here is projct
+![Screenshot](screen-main.png)
+![Screenshot](screen-post.png)
+here is project
 
 https://sandreykina.github.io/new-social/
 
 and here is backend, only on local machine 
 
 https://github.com/Sandreykina/new-social-api
+
+
 
 # Getting Started with Create React App
 
