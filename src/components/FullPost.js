@@ -58,14 +58,15 @@ const FullPost = () => {
 
     return (
         <div className="content">
-            <button onClick={() => navigate(-1)}>Go Back</button>
+            <button className="fullpost-btn" onClick={() => navigate(-1)}>Назад</button>
             <h1 > {post?.title} </h1>
             <img
                 src={post?.img}
                 className="element__image"
                 alt={post?.description}
             />
-            {post?.description}
+            <div className="fullpost__text">{post?.description}</div>
+            
             <div className="fullpost__comment-likes">
                 <FormControlLabel
                     onChange={handleLikeClick}
@@ -77,7 +78,7 @@ const FullPost = () => {
             </div>
             <div className="fullpost__comment-newcomment">
                 <input onKeyPress={handleEnter} onChange={handleTextChange} ref={newPostElement}></input>
-                <button onClick={handleAddComment} type="submit">Отправить</button>
+                <button className="fullpost-btn" onClick={handleAddComment} type="submit">Отправить</button>
             </div>
             {comments?.map((user, i) => (
                 <div className="fullpost__comment" key={i}>

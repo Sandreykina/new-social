@@ -42,4 +42,7 @@
 @import url(./blocks/popup/__content/popup__content.css);
 @import url(./blocks/popup/__image/popup__image.css);
 @import url(./blocks/popup/__place-name/popup__place-name.css);
+
 @import url(./blocks/fullpost/fullpost__comment.css);
+@import url(./blocks/fullpost/__fullpost__button/fullpost-btn.css);
+@import url(./blocks/fullpost/fullpost__text.css);

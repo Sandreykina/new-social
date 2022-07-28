@@ -1,0 +1,27 @@
+.fullpost-btn {
+    background-color: white;
+    width: 155px;
+    height: 52px;
+    align-items: center;
+    grid-gap: 10px;
+    gap: 10px;
+    color: rgb(14, 7, 7);
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+    opacity: 1;
+    transition: .3s opacity;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.fullpost:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 200px) {
+    .fullpost {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

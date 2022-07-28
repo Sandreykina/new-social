@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: stretch;
     color: #CC3300;
-    margin: 10;
+    margin: 20px;
 } 
 .fullpost__comment-heading {
     display: flex;
@@ -18,21 +18,23 @@
     height: 50px;
     font-size: 14px;
 }
-.fullpost__comment-info {
-    color: rgba(180, 8, 8, 0.5);
-    margin-left: 10px;
-}
 .fullpost__comment-author {
     color: rgba(14, 136, 173, 0.85);
     font-weight: bold;
     text-decoration: none;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.fullpost__comment-body {
+    text-decoration: none;
+    margin-left: 10px;
+    border-bottom: 1px solid grey;
 }
 .fullpost__comment-author:hover {
     text-decoration: underline;
 }
 .fullpost__comment-newcomment {
     display: flex;
-    align-items: right;
     height: 50px;
     font-size: 14px;
 }
