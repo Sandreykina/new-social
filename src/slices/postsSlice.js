@@ -8,7 +8,7 @@ const initialState = {
 
 export const [getAllPosts] = apiAction(
   'posts/getAllPosts', ({ onFailure, onSuccess }) => ({
-    url: 'http://localhost:5000/api/posts',
+    url: 'https://new-social-api.herokuapp.com/api/posts',
     onSuccess,
     onFailure,
   }),
@@ -17,7 +17,7 @@ export const [getAllPosts] = apiAction(
 export const [addPost] = apiAction(
   'posts/addPost',
   ({ data, onSuccess, onFailure }) => ({
-    url: `http://localhost:5000/api/posts`,
+    url: `https://new-social-api.herokuapp.com/api/posts`,
     method: 'POST',
     data,
     onSuccess,

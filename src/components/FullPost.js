@@ -17,7 +17,7 @@ const FullPost = () => {
     let newPostElement = React.useRef();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/posts/${id}`)
+        axios.get(`https://new-social-api.herokuapp.com/api/posts/${id}`)
             .then(res => {
                 setPost(res.data);
                 setComments(res.data.comments);
@@ -26,7 +26,7 @@ const FullPost = () => {
     }, [id]);
 
     const handleLikeClick = () => {
-        axios.put(`http://localhost:5000/api/posts/${id}`)
+        axios.put(`https://new-social-api.herokuapp.com/api/posts/${id}`)
             .then(res => {
                 setPost(res.data);
                 setIsLiked(res.data.isLiked);
@@ -34,7 +34,7 @@ const FullPost = () => {
     }
 
     const handleAddComment = () => {
-        axios.post(`http://localhost:5000/api/posts/${id}`,  {
+        axios.post(`https://new-social-api.herokuapp.com/api/posts/${id}`,  {
                 id: comments?.length,
                 name: 'Me',
                 comment: comment,

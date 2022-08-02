@@ -7,7 +7,7 @@ const Profile = () => {
     const [profile, setProfile] = useState();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/profile`)
+        axios.get(`https://new-social-api.herokuapp.com/api/profile`)
             .then(res => {
                 setProfile(res.data);
         })
