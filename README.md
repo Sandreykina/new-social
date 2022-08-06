@@ -2,7 +2,7 @@ This is a blog on React, Redux Toolkit with adaptive layout. BEM methodology was
 ![Screenshot](screen-main.png)
 ![Screenshot](screen-post.png)
 
-here is backend, only on local machine 
+here is backen
 https://github.com/Sandreykina/new-social-api
 
 
