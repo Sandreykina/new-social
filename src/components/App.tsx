@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import Main from "./Main";
-import Login from "./Login";
-import AddPostPopup from "./AddPostPopup";
-import FullPost from "./FullPost";
+import { useState, useEffect } from "react";
+import * as React from 'react';
+import Header from './Header';
+import Main from './Main';
+import Login from './Login';
+import AddPostPopup from './AddPostPopup';
+import FullPost from './FullPost';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import Profile from "./Profile";
-import { PostsUrl } from "../utils/router";
+import Profile from './Profile';
+import { PostsUrl } from '../utils/router';
+import type { postType } from '../slices/postsSlice';
 
 const App = () => {
-  const [isAddPostPopupOpen, setIsAddPostPopupOpen] = useState(false);
+  const [isAddPostPopupOpen, setIsAddPostPopupOpen] = useState<boolean | (() => boolean)>(false);
   const navigate = useNavigate();
-  const [loggedIn, setIsloggedIn] = useState(false);
+  const [loggedIn, setIsloggedIn] = useState<boolean | (() => boolean)>(false);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -31,11 +33,11 @@ const App = () => {
     navigate("./profile")
   };
 
-  const handlePostClick = (post) => {
+  const handlePostClick = (post: postType) => {
     navigate(PostsUrl.pushPath({ id: post.id }));
   };
 
-  const onEnter = (login, password) => {
+  const onEnter = (login: string, password: string) => {
     if (login !== '' && password !== '') {
       setIsloggedIn(true);
       navigate("/");
@@ -46,9 +48,9 @@ const App = () => {
       <div className="page">
         <Header />
         <Routes>
-          <Route exact path={PostsUrl.path} element={<FullPost />} />
-          <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/login" element={<Login onSubmit={onEnter} />} />
+          <Route path={PostsUrl.path} element={<FullPost />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login onSubmit={onEnter} />} />
           <Route path="/" element={
             <Main
               onAddPost={handleAddPostClick}
@@ -59,7 +61,6 @@ const App = () => {
         <AddPostPopup
           isOpen={isAddPostPopupOpen}
           onClose={closeAllPopups}
-          onUpdatePost={handleAddPostClick}
         />
       </div>
   );

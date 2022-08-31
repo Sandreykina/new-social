@@ -1,7 +1,8 @@
 import React from "react";
-import headerLogo from "../images/logo.svg";
+import headerLogo from '../images/logo.svg';
 
-function Header() {
+
+const Header = () => {
   return (
     <div>
       <header className="header">

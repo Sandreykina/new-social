@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
-const Login = ({ onSubmit }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isEnable, setEnable] = useState(false);
+type LoginProps = {
+  onSubmit: (username: string, password:string) => void
+}
+
+const Login: React.FC<LoginProps> = ({ onSubmit }) => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isEnable, setEnable] = useState<boolean>(false);
 
   const handleKeyUp = () => {
     if (username.length > 0 && password.length > 0) setEnable(true);

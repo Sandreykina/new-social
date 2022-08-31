@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from "react";
-import Popup from "./Popup";
-import { addPost, getAllPosts } from "../slices/postsSlice";
-import { useDispatch, useSelector } from 'react-redux';
+import Popup from './Popup';
+import { addPost, getAllPosts } from '../slices/postsSlice';
+import { useAppDispatch, useAppSelector } from '../hook';
 
-const AddPostPopup = ({ isOpen, onClose }) => {
+type AddPostPopupProps = {
+  isOpen: boolean | (() => boolean)
+  onClose: () => void
+}
+const AddPostPopup: React.FC<AddPostPopupProps> = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [text, setText] = useState("");
-  const dispatch = useDispatch();
-  const post = useSelector((state) => state.posts.postsArr);
+  const dispatch = useAppDispatch();
+  const post = useAppSelector((state) => state.posts.posts);
   const postsCount = post.length;
 
-  const handleNameChange = (e) => {
+  const handleNameChange = (e: any) => {
     setName(e.target.value);
   }
 
-  const handleLinkChange = (e) => {
+  const handleLinkChange = (e: any) => {
     setLink(e.target.value);
   }
 
-  const handleTextChange = (e) => {
+  const handleTextChange = (e: any) => {
     setText(e.target.value);
   }
 
@@ -71,8 +75,8 @@ const AddPostPopup = ({ isOpen, onClose }) => {
             onChange={handleNameChange}
             type="text"
             className="popup__input"
-            minLength="2"
-            maxLength="30"
+            minLength={Number("2")}
+            maxLength={Number("30")}
           />
           <input
             required
@@ -100,10 +104,9 @@ const AddPostPopup = ({ isOpen, onClose }) => {
               id="text"
               value={text}
               onChange={handleTextChange}
-              type="text"
               className="popup__input"
-              minLength="2"
-              maxLength="1500"
+              minLength={Number("2")}
+              maxLength={Number("1500")}
             />
           </div>
         </div>
@@ -112,6 +115,7 @@ const AddPostPopup = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSave}
+      buttonText="Сохранить"
     />
   );
 }

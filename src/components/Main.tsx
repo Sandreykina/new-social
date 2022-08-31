@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
-import Post from "./Post";
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllPosts } from "../slices/postsSlice";
+import Post from './Post';
+import { useAppDispatch, useAppSelector } from '../hook';
+import { getAllPosts } from '../slices/postsSlice';
 import axios from 'axios';
+import type { postType } from '../slices/postsSlice';
 
-const Main = ({ onAddPost, onPostClick, onProfileInfo }) => {
-  const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts.postsArr);
+interface MainProps {
+  onAddPost: () => void,
+  onPostClick: (post: postType) => void,
+  onProfileInfo: () => void,
+}
+
+const Main:  React.FC<MainProps> = ({ onAddPost, onPostClick, onProfileInfo }) => {
+  const dispatch = useAppDispatch();
+  const posts = useAppSelector((state) => state.posts.posts);
   const [profile, setProfile] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/profile`)
+    axios.get(`https://new-social-api.herokuapp.com/api/profile`)
       .then(res => {
         setProfile(res.data);
       })
@@ -32,7 +39,7 @@ const Main = ({ onAddPost, onPostClick, onProfileInfo }) => {
         <section className="profile">
           <div onClick={onProfileInfo} className="profile__wrapper">
             <img
-              src={profile?.avatar}
+              src={profile?.['avatar']}
               alt="Аватарка"
               className="profile__avatar"
             />
@@ -40,9 +47,9 @@ const Main = ({ onAddPost, onPostClick, onProfileInfo }) => {
           </div>
           <div className="profile__info">
             <div className="profile__info-twin">
-              <h1 className="profile__title">{profile?.nickname}</h1>
+              <h1 className="profile__title">{profile?.['nickname']}</h1>
             </div>
-            <p className="profile__subtitle">{profile?.fio}</p>
+            <p className="profile__subtitle">{profile?.['fio']}</p>
           </div>
           <button
             onClick={onAddPost}

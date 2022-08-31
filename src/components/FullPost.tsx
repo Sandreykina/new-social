@@ -6,15 +6,17 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import axios from 'axios';
+import type { postType, commentType } from '../slices/postsSlice';
 
 const FullPost = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const [isLiked, setIsLiked] = useState();
-    const [post, setPost] = useState();
-    const [comments, setComments] = useState();
-    const [comment, setComment] = useState();
-    let newPostElement = React.useRef();
+    const [isLiked, setIsLiked] = useState<boolean>();
+    const [post, setPost] = useState<postType>();
+    const [comments, setComments] = useState<commentType[]>();
+    const [comment, setComment] = useState<commentType["comment"]>();
+    //let newPostElement = React.useRef<HTMLInputElement>(null);
+    let newPostElement = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
     useEffect(() => {
         axios.get(`https://new-social-api.herokuapp.com/api/posts/${id}`)
@@ -22,7 +24,7 @@ const FullPost = () => {
                 setPost(res.data);
                 setComments(res.data.comments);
                 setIsLiked(res.data.isLiked);
-        })
+            })
     }, [id]);
 
     const handleLikeClick = () => {
@@ -30,32 +32,36 @@ const FullPost = () => {
             .then(res => {
                 setPost(res.data);
                 setIsLiked(res.data.isLiked);
-        })
+            })
     }
 
     const handleAddComment = () => {
-        axios.post(`https://new-social-api.herokuapp.com/api/posts/${id}`,  {
-                id: comments?.length,
-                name: 'Me',
-                comment: comment,
-        })
-            .then(res => {
+        debugger
+        axios.post(`https://new-social-api.herokuapp.com/api/posts/${id}`, {
+            id: comments?.length,
+            name: 'Me',
+            comment: comment,
+        }).then(res => {
+            if(!!res.data){
                 setComments(res.data.comments);
+            }
         })
         setComment('');
-        newPostElement.current.value = '';
+        if (!!newPostElement.current) {
+            newPostElement.current.value = '';
+        }
     }
 
-    const handleTextChange = (e) => {
+    const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setComment(e.target.value);
     }
 
-    const handleEnter = (e) => {
+    const handleEnter = (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {
             handleAddComment();
-        } 
+        }
     };
-
+// ref={newPostElement}
     return (
         <div className="content">
             <button className="fullpost-btn" onClick={() => navigate(-1)}>Назад</button>
@@ -66,7 +72,7 @@ const FullPost = () => {
                 alt={post?.description}
             />
             <div className="fullpost__text">{post?.description}</div>
-            
+
             <div className="fullpost__comment-likes">
                 <FormControlLabel
                     onChange={handleLikeClick}

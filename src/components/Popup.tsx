@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
 
-const Popup = ({
+type PopupProps = {
+  name: string
+  title: string
+  children: {}
+  isOpen: boolean | (() => boolean)
+  onClose: () => void
+  buttonText: string
+  onSubmit: () => void
+}
+
+const Popup: React.FC<PopupProps> = ({
   name,
   children,
   isOpen,
   onClose,
-  buttonText = "Сохранить",
-  onSubmit,
+  buttonText,
+  onSubmit
 }) => {
-  const handleEscClose = (e) => {
+  const handleEscClose = (e: any) => {
     if (
       e.key === "Escape" ||
       e.target.classList.contains("popup__close") ||
       e.target.classList.contains("popup_opened")
     ) {
-      onClose(e);
+      onClose();
     }
   };
 
