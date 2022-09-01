@@ -4,7 +4,7 @@ type PopupProps = {
   name: string
   title: string
   children: {}
-  isOpen: boolean | (() => boolean)
+  isOpen: boolean
   onClose: () => void
   buttonText: string
   onSubmit: () => void
@@ -58,7 +58,6 @@ const Popup: React.FC<PopupProps> = ({
             {buttonText}
           </button>
         </div>
-
       </div>
     </div>
   );

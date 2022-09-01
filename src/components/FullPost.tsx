@@ -61,7 +61,7 @@ const FullPost = () => {
             handleAddComment();
         }
     };
-// ref={newPostElement}
+
     return (
         <div className="content">
             <button className="fullpost-btn" onClick={() => navigate(-1)}>Назад</button>
@@ -72,7 +72,6 @@ const FullPost = () => {
                 alt={post?.description}
             />
             <div className="fullpost__text">{post?.description}</div>
-
             <div className="fullpost__comment-likes">
                 <FormControlLabel
                     onChange={handleLikeClick}

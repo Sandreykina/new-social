@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-type LoginProps = {
-  onSubmit: (username: string, password:string) => void
+interface LoginProps {
+  onSubmit: (username: string, password: string) => void
 }
 
 const Login: React.FC<LoginProps> = ({ onSubmit }) => {
@@ -38,6 +38,7 @@ const Login: React.FC<LoginProps> = ({ onSubmit }) => {
       />
       <br />
       <br />
+      <div>(Любые значения подойдут)</div>
       {isEnable && (<button
         type="submit"
         id="button-input"

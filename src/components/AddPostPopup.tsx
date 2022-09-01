@@ -12,18 +12,17 @@ const AddPostPopup: React.FC<AddPostPopupProps> = ({ isOpen, onClose }) => {
   const [link, setLink] = useState("");
   const [text, setText] = useState("");
   const dispatch = useAppDispatch();
-  const post = useAppSelector((state) => state.posts.posts);
-  const postsCount = post.length;
-
-  const handleNameChange = (e: any) => {
+  const postsCount = useAppSelector((state) => state.posts.posts).length;
+  
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   }
 
-  const handleLinkChange = (e: any) => {
+  const handleLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLink(e.target.value);
   }
 
-  const handleTextChange = (e: any) => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   }
 

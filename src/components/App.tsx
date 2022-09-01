@@ -11,9 +11,9 @@ import { PostsUrl } from '../utils/router';
 import type { postType } from '../slices/postsSlice';
 
 const App = () => {
-  const [isAddPostPopupOpen, setIsAddPostPopupOpen] = useState<boolean | (() => boolean)>(false);
+  const [isAddPostPopupOpen, setIsAddPostPopupOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const [loggedIn, setIsloggedIn] = useState<boolean | (() => boolean)>(false);
+  const [loggedIn, setIsloggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     if (!loggedIn) {
