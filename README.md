@@ -1,4 +1,4 @@
-This is a blog on React, Redux Toolkit with adaptive layout. BEM methodology was used.
+This is a blog on React, Redux Toolkit, TypeScript  with adaptive layout. BEM methodology was used.
 ![Screenshot](screen-main.png)
 ![Screenshot](screen-post.png)
 
