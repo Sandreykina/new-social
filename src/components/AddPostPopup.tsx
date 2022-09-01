@@ -4,7 +4,7 @@ import { addPost, getAllPosts } from '../slices/postsSlice';
 import { useAppDispatch, useAppSelector } from '../hook';
 
 type AddPostPopupProps = {
-  isOpen: boolean | (() => boolean)
+  isOpen: boolean
   onClose: () => void
 }
 const AddPostPopup: React.FC<AddPostPopupProps> = ({ isOpen, onClose }) => {
